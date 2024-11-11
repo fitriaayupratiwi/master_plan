@@ -10,6 +10,7 @@ class PlanScreen extends StatefulWidget {
 class _PlanScreenState extends State<PlanScreen> {
   Plan plan = const Plan();
   late ScrollController scrollController;
+
   @override
   void initState() {
     super.initState();
@@ -20,10 +21,16 @@ class _PlanScreenState extends State<PlanScreen> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-// ganti ‘Namaku’ dengan Nama panggilan Anda
-      appBar: AppBar(title: const Text('Master Plan Fitri')),
+      // ganti ‘Namaku’ dengan Nama panggilan Anda
+      appBar: AppBar(title: const Text('Master Plan Arifah')),
       body: _buildList(),
       floatingActionButton: _buildAddTaskButton(),
     );
@@ -82,11 +89,6 @@ class _PlanScreenState extends State<PlanScreen> {
                   complete: task.complete,
                 ),
             );
-            @override
-            void dispose() {
-              scrollController.dispose();
-              super.dispose();
-            }
           });
         },
       ),
